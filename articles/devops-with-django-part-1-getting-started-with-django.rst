@@ -20,7 +20,7 @@ One of the most important tenants of devops is to be flexible. This is core to t
 Install System-Level Dependencies
 +++++++++++++++++++++++++++++++++
 
-::
+.. code:: bash
 
   $ sudo pacman -Sy python virtualenv
 
@@ -28,27 +28,27 @@ This will install python3
 
 Verify python installation by checking the version
 
-::
+.. code:: bash
 
   $ python --version
   Python 3.4.1
 
 And also virtualenv
 
-::
+.. code:: bash
 
   $ virtualenv --version
   1.11.6
 
 Arch Linux allows both Python2 and Python3 to be installed side-by-side as system Python. By default, we installed Python3 and that's the one that virtualenv will use. If there is any doubt, use virtualenv3.
 
-The Hitchhiker's Guide to Python provides a great into to virtualenv available <a href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">here</a>.
+The Hitchhiker's Guide to Python provides a great into to virtualenv available `here <http://docs.python-guide.org/en/latest/dev/virtualenvs/>`_.
 
 Configure the Virtual Environment
 +++++++++++++++++++++++++++++++++
-Create directories for the virtual environment and the project source code. Throughout this tutorial, we'll use pushd and popd as appropriate, rather than cd'ing everywhere like a noob :-P. We use the virtualenv command to create an environment named "johnnycage". This will be the code name of our CMS. You may want to install the tree command if you prefer a tree view, otherwise, use ls to verify the directory structure.
+Create directories for the virtual environment and the project source code. We use the virtualenv command to create an environment named "johnnycage". This will be the code name of our CMS. You may want to install the tree command if you prefer a tree view, otherwise, use ls to verify the directory structure.
 
-::
+.. code:: bash
 
   $ mkdir ~/python_envs ~/sandbox/
   $ pushd ~/python_envs
@@ -67,7 +67,7 @@ Create directories for the virtual environment and the project source code. Thro
 
 Activate, the new virtualenv, install Django and create our project.
 
-::
+.. code:: bash
 
   $ . ~/pythonenvs/johnnycage/bin/activate
   $ pip install django
@@ -78,11 +78,10 @@ Beginning Project Development
 +++++++++++++++++++++++++++++
 Using the django-admin utility, create the initial project.
 
-::
+.. code:: bash
 
   $ pushd ~/sandbox
   $ django-admin startproject johnnycage
-  $ cd johnnycage
 
 This will generate the base project structure. From here we can begin to plan our app, adding models, views, templates, tests and whatever else as necessary.
 

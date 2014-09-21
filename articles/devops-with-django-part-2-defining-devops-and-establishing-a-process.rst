@@ -64,7 +64,7 @@ Model the Data
 ~~~~~~~~~~~~~~~
 Our first model will be for page content on our root site. Models in django typically map to tables in your backend. For this exercise, we'll use the default sqlite3 provider. The page model will contain a Title, a Name, and Content.
 
-::
+.. code:: python
 
   #johnnycage/models.py
 
@@ -84,7 +84,7 @@ After saving the model, edit <code>johnnycate/settings.py</code> and add 'johnny
 
 It's handy to know what and how many apps are "installed". Use grep like so to print the INSTALLED_APPS section:
 
-::
+.. code:: python
 
   $ grep -A 8 INSTALLED_ johnnycage/settings.py
   INSTALLED_APPS = (
@@ -108,7 +108,7 @@ Next, we have to make the root project migrations aware:
 
 Now let's look at the sql our initial migration will generate:
 
-::
+.. code:: sql
 
   $ ./manage.py sqlmigrate johnnycage 0001
   BEGIN;
@@ -128,7 +128,7 @@ Next, let's apply the migration.
 
 Finally, we'll want to wire up the model to our admin interface so we can edit pages.
 
-::
+.. code:: python
 
   # johnnycage/admin.py
 
@@ -155,7 +155,7 @@ Now you should be able to login to the admin interface and create your first pag
 Create the View
 ~~~~~~~~~~~~~~~
 
-::
+.. code:: python
 
   # johnnycage/view.py
 
@@ -184,7 +184,7 @@ First, create a directory to put templates for our root site.
 
 Then create the template for the index view.
 
-::
+.. code:: django
 
   {% load staticfiles %}
   <!DOCTYPE html>
@@ -215,7 +215,7 @@ Then create the template for the index view.
 
 And also the index template.
 
-::
+.. code:: django
 
   {% extends "johnnycage/base.html" %}
 
@@ -233,7 +233,7 @@ Make the Route Accessible
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Modify johnnycage/urls.py and set a route to the home page.
 
-::
+.. code:: python
 
   from django.conf.urls import patterns, include, url
   from django.contrib import admin
@@ -264,7 +264,7 @@ We'll want to cover creating a page and rendering a view with, asserting that th
 
 Create the file **johnnycage/tests.py** and insert the following content.
 
-::
+.. code:: python
 
   from django.test import TestCase
   from django.core.urlresolvers import reverse
@@ -327,6 +327,7 @@ Create the file **johnnycage/tests.py** and insert the following content.
           self.assertEqual(response.status_code, 200)
           self.assertContains(response, "test home page")
 
+
 We've added 5 tests in two classes. Each class implements TestCase which provide the assert functions. It is a good idea to group seperate types of tests into classes, with names that describe their general purpose. In our example we have two groups, one to test database CRUD -- that is Create Retreive Update and Delete -- and the other for testing view responses.
 
 Create a Theme
@@ -342,7 +343,7 @@ Below is the completed template, after our modifications.
 base2.html
 ++++++++++
 
-::
+.. code:: django
 
   {% load staticfiles %}
   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -407,7 +408,7 @@ base2.html
 index.html
 ++++++++++
 
-::
+.. code:: django
 
   {% extends "johnnycage/base2.html" %}
   {% load staticfiles %}
@@ -434,7 +435,7 @@ index.html
 styles/layout.css:138
 +++++++++++++++++++++
 
-::
+.. code:: css
 
   #intro{
     padding:30px 0 25px 0;
